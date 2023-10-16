@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 825px;
+            height: 650px;
+            background-color: #ccc;
+            object-fit: cover;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        .pictuer {
+            width: 200px;
+            height: 200px;
+            margin: 2px;
+            border-radius: 5px;
+            /* position: absolute; */
+        }
+
+        .button {
+            position: absolute;
+            width: 100px;
+            height: 3%;
+            background-color: orange;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+            </tr>
+            <tr>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+            </tr>
+            <tr>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+                <td><img class="pictuer" onclick="check(this)" src="./check.jpg"></td>
+            </tr>
+        </table>
+        <button class="button" onclick="reset()">reset/start</button>
+    </div>
+    <script>
+        let arrImg = [
+            { main: "./img1.jpg", cross: "./check.jpg", id: 1 }, { main: "./img1.jpg", cross: "./check.jpg", id: 2 }, { main: "./img2.jpg", cross: "./check.jpg", id: 3 },
+            { main: "./img2.jpg", cross: "./check.jpg", id: 4 }, { main: "./img3.jpg", cross: "./check.jpg", id: 5 }, { main: "./img3.jpg", cross: "./check.jpg", id: 6 },
+            { main: "./img4.jpg", cross: "./check.jpg", id: 7 }, { main: "./img4.jpg", cross: "./check.jpg", id: 8 }, { main: "./img5.jpg", cross: "./check.jpg", id: 9 },
+            { main: "./img5.jpg", cross: "./check.jpg", id: 10 }, { main: "./img6.jpg", cross: "./check.jpg", id: 11 }, { main: "./img6.jpg", cross: "./check.jpg", id: 12 },
+        ]
+        console.log(arrImg);
+        let arrPictuer = document.getElementsByClassName("pictuer")
+        console.log(arrPictuer);
+        let arrId
+        let arrCheck
+        function arrID() {
+            arrId = []
+
+            for (let i = 0; i < 1000; i++) {
+                let a = Math.floor(Math.random() * 12)
+                if (arrId.indexOf(a) == -1) {
+                    arrId.push(a)
+
+                }
+                if (arrId.length == 12) {
+                    break;
+                }
+            }
+            for (let j = 0; j < 12; j++) {
+                arrImg[j].id = arrId[j]
+
+            }
+            console.log(arrImg);
+        }
+        function reset() {
+            arrID()
+            for (let i = 0; i < 12; i++) {
+                arrPictuer[arrId[i]].src = arrImg[i].cross
+
+            }
+            console.log(arrId);
+        }
+        function check(pick) {
+            for (let i = 0; i < 12; i++) {
+                if (pick == arrPictuer[i]) {
+                    console.log(arrImg[arrId[i]]);
+                    console.log(arrId[i]);
+                    arrPictuer[i].src = arrImg[arrId[i]].main
+                    // arrCheck = []
+                    // arrCheck.push(arrId[i])
+                }
+            }
+
+        }
+
+        // console.log(arrCheck);
+    </script>
+</body>
+
+</html>
