@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        .container{
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            margin: 0 auto;
+            object-fit: cover;
+            position: relative;
+            
+            
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            padding: 3px;
+        }
+        .container__top{
+            position:absolute;
+            z-index: 1;
+            display: none;
+            background-color: transparent;
+    
+        }
+        .container__bot{
+            position: absolute;
+            z-index: 0;
+            
+        }
+        .reset{
+            width: 50px;height: 20px;
+           right: 0px;
+           bottom: 5px;
+           position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container__top">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img  class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img  class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img  class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img  class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        <img class="delet" onclick="delet(this)" src="/Media/letterx_83737.png" alt="">
+        </div>
+        <div class="container__bot">
+            <img class="pictuer" src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+            <img class="pictuer"  src="" alt="">
+        </div>
+        <button class="reset" onclick="clickReset()" >Reset</button>
+        
+    </div>
+    <script>
+      
+      let arr=[
+        "/Media/baby-bear.jpg",
+        "/Media/baby-bear.jpg",
+        "/media/bird.jpg",
+        "/media/bird.jpg",
+        "/media/cat.jpg",
+        "/media/cat.jpg",
+        "/media/dog.jpg",
+        "/media/dog.jpg",
+        "/media/curious-cat.jpg",
+        "/media/curious-cat.jpg",
+        "/media/hamster.jpg",
+        "/media/hamster.jpg",
+    ]
+    let arrPictuer=document.getElementsByClassName("pictuer")
+    function clickReset() {
+        
+    
+    let arrIndex=[]
+        for (let i = 0; i <1000; i++) {
+            let count=Math.floor(Math.random()*12)
+            if (arrIndex.indexOf(count)==-1) {
+                arrIndex.push(count);
+            }
+            if (arrIndex.leng==12) {
+                break;
+            }
+        }
+    // console.log(arrIndex);
+    for (let i = 0; i < arrIndex.length; i++) {
+     arrPictuer[i].src=arr[arrIndex[i]]
+    }
+  
+}
+  function delet(pic) {
+let arrDelet=document.getElementsByClassName("delet")
+for (let i = 0; i < arrDelet.length; i++) {
+    if (pic==arrDelet[i]) {
+        arrDelet[i].style.opacity="0"
+    }
+    
+}
+  }
+    </script>
+</body>
+</html>

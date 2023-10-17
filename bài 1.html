@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: antiquewhite;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: red;
+            text-align: center;
+            width: 100%;
+            height: 100px;
+        }
+
+        input {
+            width: 400px;
+            margin-top: 30px;
+        }
+
+        .container__list {
+            display: flex;
+            justify-content: space-between;
+            height: 50px;
+        }
+
+        .button {
+            width: 10px;
+            height: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My ToDo List</h1>
+            <input class="textInput" type="text" placeholder="Title">
+            <button class="add" onclick="sendValue()">Add</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button" onclick="delet(this)">x</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button" onclick="delet(this)">x</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button" onclick="delet(this)">x</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button" onclick="delet(this)">x</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button" onclick="delet(this)">x</button>
+        </div>
+        <div class="container__list">
+            <p class="jobs">...</p>
+            <button class="button">x</button>
+        </div>
+    </div>
+    <script>
+        let arrJobs = [];
+        console.log(arrJobs);
+        function sendValue() {
+            let values = document.getElementsByClassName("textInput")[0].value;
+            arrJobs.push(values);
+            callJobs()
+            console.log(values);
+            let jobs = document.getElementsByClassName("jobs")
+            console.log(jobs);
+            if (arrJobs.length >6) {
+                alert("bạn chỉ được 6 công việc, xóa bớt công việc trước khi thêm")
+                arrJobs.pop()
+            } else {
+                for (let i = 0; i < arrJobs.length; i++) {
+                    for (let j = 0; j < jobs.length; j++) {
+                        if (i == j) {
+                            jobs[j].innerHTML = arrJobs[i]
+                        }
+                    }
+                }
+            }
+            document.getElementsByClassName("textInput")[0].value=""
+        }
+        function callJobs() {
+            console.log(arrJobs);
+        }
+        let button=document.getElementsByClassName("button");
+        console.log(button[0]);
+        function delet(abc) {
+            console.log(abc);
+            let jobs = document.getElementsByClassName("jobs")
+            for (let i = 0; i < button.length; i++) {
+                if (abc==button[i]) {
+                    arrJobs.splice(i,1)
+                    jobs[i].innerText="..."
+
+                }
+                
+            }
+            console.log(arrJobs);
+        }
+        // callJobs()
+       
+
+        
+     
+    </script>
+</body>
+
+</html>
